@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Price is right</title>
+</head>
+<body>
+    <script>
+        let playerName = prompt("What's your name ?");
+        const random = Math.floor(Math.random() * 100) +1;
+        console.log(random); 
+        while (true) {
+            let numberPlayer = parseInt(prompt("Choice a number between 1 and 100: "));
+            if (numberPlayer > random) {
+                console.log("It is less !");
+            }
+            else if (numberPlayer < random) {
+                console.log("It is more ! ");
+            }
+            else {
+                console.log(`${playerName} wins  :-) !!`);
+                break;
+            }
+        }
+    </script>
+</body>
+</html>

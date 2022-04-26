@@ -10,8 +10,8 @@
     <script>
         let playerName = prompt("What's your name ?");
         const random = Math.floor(Math.random() * 100) +1;
-        console.log(random); 
-        while (true) {
+        console.log(random); //à supp pour cacher le résultat de random 
+        while (true) {  //création d'une boucle infinie
             let numberPlayer = parseInt(prompt("Choice a number between 1 and 100: "));
             if (numberPlayer > random) {
                 console.log("It is less !");
@@ -21,7 +21,7 @@
             }
             else {
                 console.log(`${playerName} wins  :-) !!`);
-                break;
+                break;  //arrêt de la vboucle si le jppueur trouve le chiffre
             }
         }
     </script>

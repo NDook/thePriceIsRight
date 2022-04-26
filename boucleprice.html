@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Price is right</title>
+</head>
+<body>
+    <script>
+        let playerName = prompt("Quelle est ton nom ?");
+        const random = Math.floor(Math.random() * 100) +1;
+        let nbTent = parseInt(prompt("Choisir le nombre de tentative(s) :"));
+        console.log(random); //à supp pour cacher le résultat de random dans console
+        for (tent = 0; tent < nbTent; tent++ ) {  //boucle avec  nb de tentative(s) décrémentée(s)
+            let numberPlayer = parseInt(prompt("Choisi un nombre entre 1 et 100: "));
+            if (numberPlayer > random) {
+                alert("It is less !");
+                if (tent < nbTent){
+                    alert(`Il te reste ${(nbTent-tent)-1} tentative(s)`);
+                }
+            }
+            else if (numberPlayer < random) {
+                alert("It is more ! ");
+                if (tent < nbTent){
+                    alert(`Il te reste ${(nbTent-tent)-1} tentative(s)`);
+                }
+            }
+            else {
+                alert(`${playerName} a gagné  en ${tent + 1} tentative(s) !! :-)`);
+                break;  //arrêt de la boucle si le jppueur trouve le chiffre
+            }
+        }
+    </script>
+</body>
+</html>

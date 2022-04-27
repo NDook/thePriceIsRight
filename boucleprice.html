@@ -11,24 +11,36 @@
         let playerName = prompt("Quelle est ton nom ?");
         const random = Math.floor(Math.random() * 100) +1;
         let nbTent = parseInt(prompt("Choisir le nombre de tentative(s) :"));
+        while (isNaN(nbTent)){  //vérifier que la saisie est un nombre
+            alert("Merci de saisir un nombre");
+            nbTent = parseInt(prompt("Choisir le nombre de tentative(s) :"));
+        }
         console.log(random); //à supp pour cacher le résultat de random dans console
-        for (tent = 0; tent < nbTent; tent++ ) {  //boucle avec  nb de tentative(s) décrémentée(s)
-            let numberPlayer = parseInt(prompt("Choisi un nombre entre 1 et 100: "));
-            if (numberPlayer > random) {
-                alert("It is less !");
-                if (tent < nbTent){
-                    alert(`Il te reste ${(nbTent-tent)-1} tentative(s)`);
+        //boucle avec  nb de tentative(s) décrémentée(s)
+        for (tent = 0; tent < nbTent; tent++ ) {  
+            let numberPlayer = parseInt(prompt("Choisir un nombre entre 1 et 100: "));
+            while (isNaN(numberPlayer) || numberPlayer < 0 || numberPlayer >= 100) {    //verifier que la saisie est un nombre et compris entre 1 et 100
+                alert("Merci de saisir un nombre compris entre 1 et 100");
+                numberPlayer = parseInt(prompt("Choisir un nombre entre 1 et 100: "));
+            }
+            //trop haut
+            if (numberPlayer > random) { 
+                alert(`C'est moins !-- Il te reste ${(nbTent-tent)-1} tentative${(nbTent-tent-1)>1 ? "s" : "" }`); //opérateur ternaire pour afficher ou non le "s" à tentive
+                if (nbTent-tent-1 === 0){ //perdu !
+                    alert(`${playerName} : Tu as perdu`);
                 }
             }
-            else if (numberPlayer < random) {
-                alert("It is more ! ");
-                if (tent < nbTent){
-                    alert(`Il te reste ${(nbTent-tent)-1} tentative(s)`);
+            //trop bas
+            else if (numberPlayer < random) { 
+                alert(`C'est plus ! -- Il te reste ${(nbTent-tent)-1} tentative${(nbTent-tent-1)>1 ? "s" : "" }`);
+                if (nbTent-tent-1 === 0){ //perdu !
+                    alert(`${playerName} : Tu as perdu`);
                 }
             }
-            else {
-                alert(`${playerName} a gagné  en ${tent + 1} tentative(s) !! :-)`);
-                break;  //arrêt de la boucle si le jppueur trouve le chiffre
+            //gagné
+            else { 
+                alert(`${playerName} a gagné  en ${tent + 1} tentative${(tent+1)>1 ? "s" : "" } !! :-)`);
+                break;  //arrêt de la boucle si le jouueur trouve le chiffre
             }
         }
     </script>
